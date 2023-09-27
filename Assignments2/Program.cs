@@ -902,20 +902,23 @@ namespace Assignments2
                  2
             };
 
-            Console.WriteLine("Menu:");
-            for (int i = 0; i < menu.Length; i++)
-            {
-                Console.WriteLine($"{i + 1}. {menu[i]} - ${prices[i]:F2}");
-            }
             
-            int currIndex = 0;
-            double[] coinInsert = new double[1];
-            double sum = 0;
-            bool validCoin= false;
             while (true)
             {
-                
+                Console.WriteLine("Menu:");
+                for (int i = 0; i < menu.Length; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {menu[i]} - ${prices[i]:F2}");
+                }
+
+                int currIndex = 0;
+                double[] coinInsert = new double[1];
+                double sum = 0;
+                bool validCoin = false;
+                bool restart = false;
                 Console.WriteLine("Put coins into the machine: ");
+                while (true) { 
+                
                 double coins = Convert.ToDouble(Console.ReadLine());
                     for (int j = 0; j < allowedCoins.Length; j++)
                     {
@@ -927,9 +930,11 @@ namespace Assignments2
                         }
                     }
                     if (!validCoin)
-                {
+                    {
                     Console.Write("No such coin.");
-                }
+                    restart = true;
+                    break;
+                    }
                     sum += coins;
                     if (coins == 0)
                         break;
@@ -942,7 +947,9 @@ namespace Assignments2
                         coinInsert[currIndex] = coins;
                         currIndex++;
                     }
-                
+                }
+                if (restart)
+                    continue;
                 Console.WriteLine("Choose an item: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 if (choice < 1 || choice > 6)
@@ -962,8 +969,8 @@ namespace Assignments2
                     case 1:
                         if(sum > prices[0])
                         {
-                            Console.WriteLine("Your change: {0}", sum - prices[0]);
-                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {3} leva.", menu[0], sugar, prices[0]);
+                            Console.WriteLine("Your change: {0}", (sum - prices[0]).ToString("N2"));
+                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {2} leva.", menu[0], sugar, prices[0]);
                             Thread.Sleep(3000);
                             Console.WriteLine("Your drink is ready!");
                             break;
@@ -977,7 +984,7 @@ namespace Assignments2
                         if (sum > prices[1])
                         {
                             Console.WriteLine("Your change: {0}", sum - prices[1]);
-                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {3} leva.", menu[1],sugar,prices[1]);
+                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {2} leva.", menu[1],sugar,prices[1]);
                             Thread.Sleep(3000);
                             Console.WriteLine("Your drink is ready!");
                             break;
@@ -991,7 +998,7 @@ namespace Assignments2
                         if (sum > prices[2])
                         {
                             Console.WriteLine("Your change: {0}", sum - prices[2]);
-                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {3} leva.", menu[2], sugar, prices[2]);
+                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {2} leva.", menu[2], sugar, prices[2]);
                             Thread.Sleep(3000);
                             Console.WriteLine("Your drink is ready!");
                             break;
@@ -1005,7 +1012,7 @@ namespace Assignments2
                         if (sum > prices[3])
                         {
                             Console.WriteLine("Your change: {0}", sum - prices[3]);
-                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {3} leva.", menu[3], sugar, prices[3]);
+                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {2} leva.", menu[3], sugar, prices[3]);
                             Thread.Sleep(3000);
                             Console.WriteLine("Your drink is ready!");
                             break;
@@ -1019,7 +1026,7 @@ namespace Assignments2
                         if (sum > prices[4])
                         {
                             Console.WriteLine("Your change: {0}", sum - prices[4]);
-                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {3} leva.", menu[4], sugar, prices[4]);
+                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {2} leva.", menu[4], sugar, prices[4]);
                             Thread.Sleep(3000);
                             Console.WriteLine("Your drink is ready!");
                             break;
@@ -1033,7 +1040,7 @@ namespace Assignments2
                         if (sum > prices[5])
                         {
                             Console.WriteLine("Your change: {0}", sum - prices[5]);
-                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {3} leva.", menu[5], sugar, prices[5]);
+                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {2} leva.", menu[5], sugar, prices[5]);
                             Thread.Sleep(3000);
                             Console.WriteLine("Your drink is ready!");
                             break;
