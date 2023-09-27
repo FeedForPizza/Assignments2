@@ -6,7 +6,7 @@ namespace Assignments2
     {
         static void Main(string[] args)
         {
-            CoffeeMachine2();
+            ConeVolume();
         }
         static void DR2()
         {
@@ -902,7 +902,7 @@ namespace Assignments2
                  2
             };
 
-            
+
             while (true)
             {
                 Console.WriteLine("Menu:");
@@ -917,23 +917,24 @@ namespace Assignments2
                 bool validCoin = false;
                 bool restart = false;
                 Console.WriteLine("Put coins into the machine: ");
-                while (true) { 
-                
-                double coins = Convert.ToDouble(Console.ReadLine());
+                while (true)
+                {
+
+                    double coins = Convert.ToDouble(Console.ReadLine());
                     for (int j = 0; j < allowedCoins.Length; j++)
                     {
                         if (coins == allowedCoins[j])
                         {
-                         
-                        validCoin = true;
-                        break;
+
+                            validCoin = true;
+                            break;
                         }
                     }
                     if (!validCoin)
                     {
-                    Console.Write("No such coin.");
-                    restart = true;
-                    break;
+                        Console.Write("No such coin.");
+                        restart = true;
+                        break;
                     }
                     sum += coins;
                     if (coins == 0)
@@ -959,7 +960,7 @@ namespace Assignments2
                 }
                 Console.WriteLine("Sugar(0-5):");
                 int sugar = Convert.ToInt32(Console.ReadLine());
-                if(sugar > 5 || sugar < 0)
+                if (sugar > 5 || sugar < 0)
                 {
                     Console.WriteLine("Sugar amount can be between 0 and 5");
                     break;
@@ -967,7 +968,7 @@ namespace Assignments2
                 switch (choice)
                 {
                     case 1:
-                        if(sum > prices[0])
+                        if (sum > prices[0])
                         {
                             Console.WriteLine("Your change: {0}", (sum - prices[0]).ToString("N2"));
                             Console.WriteLine("Preparing your drink {0} with {1} sugar for {2} leva.", menu[0], sugar, prices[0]);
@@ -984,7 +985,7 @@ namespace Assignments2
                         if (sum > prices[1])
                         {
                             Console.WriteLine("Your change: {0}", sum - prices[1]);
-                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {2} leva.", menu[1],sugar,prices[1]);
+                            Console.WriteLine("Preparing your drink {0} with {1} sugar for {2} leva.", menu[1], sugar, prices[1]);
                             Thread.Sleep(3000);
                             Console.WriteLine("Your drink is ready!");
                             break;
@@ -1051,6 +1052,97 @@ namespace Assignments2
                         }
                         break;
                 }
+            }
+        }
+        static void Swap()
+        {
+            Console.Write("y = ");
+            int y = Convert.ToInt32(Console.ReadLine());
+            Console.Write("x = ");
+            int x = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("X is {0}, Y is {1}", x, y);
+
+            int rev = y;
+            y = x;
+            x = rev;
+
+            Console.WriteLine("X is {0}, Y is {1}", x, y);
+
+        }
+        static void Sphere()
+        {
+            Console.Write("The diameter of the sphere: ");
+            int diameter = Convert.ToInt32(Console.ReadLine());
+
+            double v = (Math.PI * Math.Pow(diameter, 3)) / 6.00;
+            double S = Math.PI * Math.Pow(diameter, 2);
+
+            Console.WriteLine("The volume of the sphere with diameter {0} is {1}", diameter, v.ToString("N4"));
+            Console.WriteLine("The surface area is {0}", S.ToString("N4"));
+        }
+        static void GuessNumber()
+        {
+            Console.Write("Your guess: ");
+            int guess = Convert.ToInt32(Console.ReadLine());
+
+            Random random = new Random();
+            int guess1 = random.Next(0, 11);
+            if (guess1 == guess)
+            {
+                Console.WriteLine("Congrats.You guessed right.");
+            }
+            else
+            {
+                Console.WriteLine("Your guess is false. It was{0}", guess1);
+            }
+        }
+        static void PizzaMaker()
+        {
+            Console.Write("Pizza type: ");
+            string pizzaType = Console.ReadLine();
+
+            Console.WriteLine("Diameter: ");
+            int diameter= Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Thickness: ");
+            double thick= Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Select topping #1: ");
+            string topping1 = Console.ReadLine();
+            Console.WriteLine("Select topping #2: ");
+            string topping2 = Console.ReadLine();
+            Console.WriteLine("How many slices: ");
+            int slices = Convert.ToInt32(Console.ReadLine());
+
+            double v = (Math.PI * Math.Pow(diameter, 3)) / 6.00;
+            Console.WriteLine($"You have ordered {diameter}cm pizza, {thick.ToString("N1")}cm thick, which has {topping1} and {topping2}." +
+                $"It will be cut in {slices}. The volume of the pizza with radius {diameter/2} and height {thick} is {v.ToString("N0")}cm3");
+        }
+        static void ConeVolume()
+        {
+            
+            while (true)
+            {
+                Console.Write("Radius: ");
+                int radius = Convert.ToInt32(Console.ReadLine());
+
+                if (radius <= 0)
+                {
+                    Console.Write("Radius must be > 0");
+                    break;
+                }
+                    
+                Console.Write("Height: ");
+                int height = Convert.ToInt32(Console.ReadLine());
+                
+                    if (height <= 0)
+                    {
+                        Console.Write("Height must be > 0");
+                        break;
+                    }
+
+                    double v = (1.0 / 3.0) * Math.PI * Math.Pow(radius, 2) * height;
+                    Console.WriteLine($"The volume of the cone is {v.ToString("N2")}");
+                break;
             }
         }
     }
