@@ -6,7 +6,7 @@ namespace Assignments2
     {
         static void Main(string[] args)
         {
-            ConeVolume();
+            DateConditions();
         }
         static void DR2()
         {
@@ -1143,6 +1143,185 @@ namespace Assignments2
                     double v = (1.0 / 3.0) * Math.PI * Math.Pow(radius, 2) * height;
                     Console.WriteLine($"The volume of the cone is {v.ToString("N2")}");
                 break;
+            }
+        }
+        static void EvenOrOdd()
+        {
+            Console.WriteLine("Enter a number: ");
+            int num = Convert.ToInt32(Console.ReadLine());
+            if(num % 2 == 0)
+            {
+                Console.WriteLine("Even.");
+
+            }
+            else
+            {
+                Console.WriteLine("Odd.");
+            }
+        }
+        static void QuadraticEquations()
+        {
+            Console.WriteLine("a: ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            
+            Console.WriteLine("b: ");
+            int b = Convert.ToInt32(Console.ReadLine());
+            
+            Console.WriteLine("c: ");
+            int c = Convert.ToInt32(Console.ReadLine());
+            if (a == 0)
+            {
+                Console.WriteLine("a cannot be zero");
+                return;
+
+            }
+                
+            double D = Math.Pow(2, b) - 4 * a * c;
+            if(D > 0)
+            {
+                double x1 = (-b + Math.Sqrt(D)) / (2 * a);
+                double x2 = (-b - Math.Sqrt(D)) / (2 * a);
+                Console.WriteLine($"x1 = {x1} \n x2 = {x2}" );
+            }
+            else if(D == 0)
+            {
+                double x = -b / (2 * a);
+                Console.WriteLine($"x = {x}");
+            }
+            else if(D < 0)
+            {
+                Console.WriteLine("No solution");
+            }
+        }
+        static void CurrencyConverter()
+        {
+            Console.WriteLine("Enter a currency (EUR, USD, JPY): ");
+            string curr = Console.ReadLine();
+            Console.WriteLine("Amount: ");
+            double amount = Convert.ToDouble(Console.ReadLine());   
+            if(amount < 0 || amount == 0)
+            {
+                Console.WriteLine("Only positive amounts, please!");
+            }
+            switch (curr)
+            {
+                case "EUR":
+                    double inLeva = amount * 1.9558;
+                    Console.WriteLine($"{amount} {curr} are {inLeva.ToString("N2")} LEVA.");
+                    break;
+                case "USD":
+                    inLeva = amount * 1.72;
+                    Console.WriteLine($"{amount} {curr} are {inLeva.ToString("N2")} LEVA.");
+                    break;
+                case "JPY":
+                    inLeva = amount * 0.016196;
+                    Console.WriteLine($"{amount} {curr} are {inLeva.ToString("N2")} LEVA.");
+                    break;
+                default:
+                    Console.WriteLine("No such currency.");
+                    break;
+            }
+        }
+        static void Calculator()
+        {
+            Console.WriteLine("a: ");
+            int a = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("b: ");
+            int b = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Operation: ");
+            string operation = Console.ReadLine();
+            switch (operation)
+            {
+                case "+":
+                    Console.WriteLine($"Result {a+b}");
+                    break;
+                case "-":
+                    Console.WriteLine($"Result {a - b}");
+                    break;
+                case "*":
+                    Console.WriteLine($"Result {a * b}");
+                    break;
+                case "/":
+                    if(b == 0)
+                    {
+                        Console.WriteLine("Division by zero is not allowed");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Result {a / b}");
+                        break;
+                    }
+                case "%":
+                    if (b == 0)
+                    {
+                        Console.WriteLine("Division by zero is not allowed");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Result {a % b}");
+                        break;
+                    }
+                case "AVG":
+                    Console.WriteLine($"Result {(a+b)/2}");
+                    break;
+                default:
+                    Console.WriteLine("This operator is not supported");
+                    break;
+            }
+        }
+        static void DateConditions()
+        {
+            Console.Write("Year: ");
+            int year = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Month: ");
+            int month = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Day: ");
+            int day = Convert.ToInt32(Console.ReadLine());
+            if(year < 1900 || year > 2019)
+            {
+                Console.WriteLine("Only years between 1900 and 2019");
+                return;
+            }
+            else if(month < 1 || month > 12)
+            {
+                Console.WriteLine("Invalid month.");
+                return;
+            }
+            else if(day <1 || day > 31)
+            {
+                Console.WriteLine("Invalid day");
+                return;
+            }
+            else
+            {
+                if(month >= 11 || month <= 3)
+                {
+                    Console.WriteLine("It's winter.");
+                    if(month == 12 || day >= 24 || day <= 26)
+                    {
+                        Console.WriteLine("Merry Christmas");
+                    }
+                }
+                else if(month >= 6 || month <= 8)
+                {
+                    Console.WriteLine("It's summer");
+                    if(day == 1 || month == 6)
+                    {
+                        Console.WriteLine("International Children’s Day");
+                    }
+                }
+                else if (month == 4 || month == 5)
+                {
+                    Console.WriteLine("It's spring");
+                }
+                else if(month == 9 || month == 10)
+                {
+                    Console.WriteLine("It's spring");
+                }
             }
         }
     }
